@@ -1,23 +1,31 @@
 /* =========================================
- * HIỆU ỨNG MƯA MA TRẬN MÀU HỒNG
+ * HIỆU ỨNG MƯA MA TRẬN MÀU HỒNG (ĐÃ FIX LỖI KHUNG HÌNH)
  * ========================================= */
 const matrixCanvas = document.getElementById("matrixCanvas");
 const ctxMatrix = matrixCanvas.getContext("2d");
 
-matrixCanvas.width = window.innerWidth;
-matrixCanvas.height = window.innerHeight;
-
-// Các ký tự sẽ rơi xuống (Giống trong ảnh là I LOVE YOU)
+// Các ký tự sẽ rơi xuống
 const letters = "ILOVEYOU";
 const characters = letters.split("");
-
 const fontSize = 16;
-const columns = matrixCanvas.width / fontSize;
 
-const drops = [];
-for (let x = 0; x < columns; x++) {
-  drops[x] = 1;
+let columns, drops;
+
+// Tạo hàm khởi tạo lại ma trận để gọi lại mỗi khi đổi size màn hình
+function initMatrix() {
+  matrixCanvas.width = window.innerWidth;
+  matrixCanvas.height = window.innerHeight;
+
+  columns = Math.floor(matrixCanvas.width / fontSize);
+  drops = [];
+
+  for (let x = 0; x < columns; x++) {
+    drops[x] = 1;
+  }
 }
+
+// Gọi lần đầu tiên khi load web
+initMatrix();
 
 function drawMatrix() {
   // Tạo lớp nền đen hơi trong suốt để tạo vệt mờ cho chữ đang rơi
@@ -42,11 +50,12 @@ function drawMatrix() {
 // Tốc độ rơi của mưa (số càng nhỏ rơi càng nhanh)
 setInterval(drawMatrix, 50);
 
-window.addEventListener("resize", () => {
-  matrixCanvas.width = window.innerWidth;
-  matrixCanvas.height = window.innerHeight;
-});
+// Lắng nghe sự kiện thay đổi kích thước màn hình để vẽ lại cho kín màn
+window.addEventListener("resize", initMatrix);
 
+/* =========================================
+ * HIỆU ỨNG TRÁI TIM (Giữ nguyên của bạn)
+ * ========================================= */
 /* =========================================
  * HIỆU ỨNG TRÁI TIM (Giữ nguyên của bạn)
  * ========================================= */
