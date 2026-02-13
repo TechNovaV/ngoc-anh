@@ -4,9 +4,6 @@ body {
   padding: 0;
   margin: 0;
   background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden; /* Ngăn thanh cuộn */
 }
 
@@ -18,59 +15,35 @@ body {
   width: 100%;
   height: 100%;
   z-index: 1;
+  display: block;
 }
 
+/* Hộp chứa trái tim - Canh giữa tuyệt đối */
 .box {
   width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  z-index: 10; /* Trái tim nằm trên ma trận */
-}
-
-canvas {
-  position: absolute;
-  width: 100%;
   height: 100%;
-}
-
-#pinkboard {
-  position: relative;
-  margin: auto;
-  width: 400px; /* Thu nhỏ kích thước chuẩn lại */
-  max-width: 100vw; /* Tự động bóp nhỏ lại cho vừa với chiều rộng màn hình điện thoại */
-  height: 400px;
-  max-height: 100vh; /* Tự động bóp nhỏ cho vừa chiều cao */
-  animation: animate 2s infinite;
-}
-
-#pinkboard:before,
-#pinkboard:after {
-  content: "";
   position: absolute;
-  background: #ff5ca4;
-  width: 100px;
-  height: 160px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-}
-
-#pinkboard:before {
-  left: 100px;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-  box-shadow:
-    0 14px 28px rgba(0, 0, 0, 0.25),
-    0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-#pinkboard:after {
+  top: 0;
   left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none; /* Để không che mất hiệu ứng khác */
+}
+
+/* Trái tim chính */
+#pinkboard {
+  /* Bí quyết ở đây: Đặt kích thước khổng lồ (200% màn hình) 
+     để khi thu nhỏ viền canvas không bao giờ bị lộ vào trong */
+  width: 200vw;
+  height: 200vh;
+  position: absolute;
+  animation: animate 2s infinite;
+
+  /* Giúp hòa trộn màu hồng vào nền ma trận phía sau */
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 15px rgba(255, 92, 164, 0.4));
 }
 
 @keyframes animate {
