@@ -1,0 +1,58 @@
+1. Mạch giải mã 2 → 4 (74139)
+
+Chân G (Cho phép): Hoạt động ở mức thấp (0); khi G=1, mạch bị khóa, tất cả ngõ ra đều bằng 1.
+
+
+Hoạt động: Giải mã đúng mã nhị phân ngõ vào; ngõ ra được chọn sẽ ở mức 0.
+
+
+2. Mạch giải mã 3 → 8 (74138)
+
+Điều kiện hoạt động: Mạch chỉ chạy khi G1=1 và G2A=G2B=0.
+
+
+Hoạt động: Chuyển đổi mã 3 bit sang 8 đường ngõ ra tương ứng (mức thấp).
+
+
+3. Mạch giải mã BCD → Thập phân (7442)
+
+Hoạt động: Chấp nhận mã BCD từ 0-9 và làm sáng LED tương ứng tại ngõ ra số thập phân đó.
+
+
+4. Mạch giải mã Excess-3 → Thập phân (7443)
+
+Nguồn gốc: Mã Excess-3 được tạo ra bằng cách lấy mã nhị phân cộng thêm 3 ($+0011_2$).
+
+
+Hoạt động: Giải mã chính xác các tổ hợp mã dư 3 sang số thập phân.
+
+
+5. Mạch giải mã Gray Excess-3 → Thập phân (7444)
+
+Đặc điểm: Sử dụng mã Gray (chỉ thay đổi 1 bit giữa các số liên tiếp) dựa trên nền mã dư 3.
+
+
+Hoạt động: Giải mã đúng theo bảng chân trị Gray sang thập phân.
+
+
+6. Mạch so sánh (7485)
+
+Hoạt động: So sánh giá trị hai số nhị phân A và B; chỉ một trong ba đèn ($A<B, A=B, A>B$) sáng tùy theo kết quả.
+
+
+7. Mạch cộng (74283)
+
+Hoạt động: Thực hiện cộng hai số nhị phân 4-bit; kết quả tổng và số dư ngõ ra ($C_4$) hiển thị chính xác trên bộ hiển thị.
+
+
+8. Mạch dồn kênh 8 → 1 & Phân kênh 1 → 8
+
+Dồn kênh: Chọn 1 trong 8 tín hiệu ngõ vào đưa ra ngõ ra duy nhất dựa vào địa chỉ A, B, C.
+
+
+Phân kênh: Đưa tín hiệu từ một nguồn đến 1 trong 8 ngõ ra tùy theo mã địa chỉ.
+
+
+9. Mạch mã hóa ưu tiên 16 → 4
+
+Đặc điểm: Khi nhiều ngõ vào cùng kích hoạt, mạch chỉ mã hóa cho ngõ vào có chỉ số lớn nhất (ưu tiên cao nhất).
